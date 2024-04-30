@@ -4,6 +4,7 @@ import Title from '../../components/Title';
 import Book from '../../app/domain/Book';
 import BooksContext from '../../context/BooksContext';
 import Header from '../../components/Header';
+import Body from '../../components/Body';
 
 export default function MainPage() {
   const [books, setBooks] = useState<Book[]>([]);
