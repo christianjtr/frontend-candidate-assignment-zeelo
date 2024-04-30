@@ -1,35 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
-
+import { useFetchBooks } from '@hooks/useFetchBooks';
 import Title from '@components/Title';
-import Book from '@app/domain/Book';
-import BooksContext from '@context/BooksContext';
 import { Header } from '@components/Layout';
 
 export default function Books() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const booksContext = useContext(BooksContext) as Record<string, () => Promise<{ data: Book[]; error: unknown }>>;
+  const { books, isLoading, hasError } = useFetchBooks();
 
-  useEffect(() => {
-    (async () => {
-      const { data, error } = await booksContext.findBooks();
-      if (error) {
-        return;
-      }
-
-      setBooks(data);
-    })();
-  }, [booksContext]);
+  if (isLoading) return null;
 
   return (
     <>
       <Title>Books list</Title>
-
-      {books?.map((eachBook: Book) => {
+      {books?.map((book) => {
         return (
-          <div key={eachBook.id}>
-            <img src={eachBook.coverUrl} alt={eachBook.title} />
-
-            <Header>{eachBook.title}</Header>
+          <div key={book.id}>
+            <img src={book.coverUrl} alt={book.title} />
+            <Header>{book.title}</Header>
           </div>
         );
       })}
