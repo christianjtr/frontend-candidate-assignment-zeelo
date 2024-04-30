@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 
-import Title from '../../components/Title';
-import Book from '../../app/domain/Book';
-import BooksContext from '../../context/BooksContext';
-import { Header } from '../../components/Layout';
+import Title from '@components/Title';
+import Book from '@app/domain/Book';
+import BooksContext from '@context/BooksContext';
+import { Header } from '@components/Layout';
 
 export default function MainPage() {
   const [books, setBooks] = useState<Book[]>([]);

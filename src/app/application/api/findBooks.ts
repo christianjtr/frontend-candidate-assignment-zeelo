@@ -1,7 +1,7 @@
-import { debounce } from '../../../utils/debounce';
+import { debounce } from '@utils/debounce';
 import database from './database.json';
-import { failRandomly, ErrorCode } from '../../../utils/errors';
-import Book from '../../domain/Book';
+import { failRandomly, ErrorCode } from '@utils/errors';
+import Book from '@app/domain/Book';
 
 type paginatedType = {
   page?: number;
