@@ -5,7 +5,7 @@ import Book from '@app/domain/Book';
 import BooksContext from '@context/BooksContext';
 import { Header } from '@components/Layout';
 
-export default function MainPage() {
+export default function Books() {
   const [books, setBooks] = useState<Book[]>([]);
   const booksContext = useContext(BooksContext) as Record<string, () => Promise<{ data: Book[]; error: unknown }>>;
 
