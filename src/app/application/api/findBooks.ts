@@ -17,7 +17,7 @@ export async function findBooks({ page = 1, perPage = 25 }: paginatedType = {}) 
 
   return {
     data: database.books.slice((page - 1) * perPage, page * perPage - 1).map((eachBook) => {
-      return new Book(eachBook.id, eachBook.title, eachBook.author, eachBook.price);
+      return new Book(eachBook.id, eachBook.title, eachBook.author, eachBook.price, eachBook.cover_url);
     }),
   };
 }
