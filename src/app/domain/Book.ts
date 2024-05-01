@@ -1,9 +1,6 @@
 import BaseEntity from './BaseEntity';
 
-export interface GenreCollection<T> {
-  length: 3;
-  [index: number]: T;
-}
+export type GenreCollection<T> = [T, T, T, ...T[]];
 export default class Book extends BaseEntity {
   title?: string = '';
   author?: string = '';

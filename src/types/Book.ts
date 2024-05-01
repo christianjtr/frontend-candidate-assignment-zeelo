@@ -6,7 +6,7 @@ export namespace BookAPIResponse {
     title: string;
     author: string;
     price: number;
-    coverUrl: string;
+    cover_url: string;
     genres: GenreCollection<string>;
     description: string;
   }
