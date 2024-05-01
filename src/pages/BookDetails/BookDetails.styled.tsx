@@ -7,162 +7,90 @@ export const StyledBookDetails = styled.div`
       0 2px 2px rgba(0, 0, 0, 0.1);
     background: #fff;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    margin-bottom: 30px;
+    position: relative;
+
+    .ribbon {
+      font-size: ${(props) => props.theme.fontSizes.lg}px;
+      font-weight: 600;
+      color: #fff;
+      padding: 5px;
+    }
+    .ribbon {
+      --f: 0.5em;
+      --r: 0.8em;
+
+      position: absolute;
+      top: 20px;
+      right: calc(-1 * var(--f));
+      padding-inline: 0.25em;
+      line-height: 1.8;
+      background: ${(props) => props.theme.colors.pink};
+      border-bottom: var(--f) solid #0005;
+      border-left: var(--r) solid #0000;
+      clip-path: polygon(
+        var(--r) 0,
+        100% 0,
+        100% calc(100% - var(--f)),
+        calc(100% - var(--f)) 100%,
+        calc(100% - var(--f)) calc(100% - var(--f)),
+        var(--r) calc(100% - var(--f)),
+        0 calc(50% - var(--f) / 2)
+      );
+    }
+
+    .card-image {
+      display: flex;
+      flex-direction: column;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        margin: auto;
+        max-height: 300px;
+        flex-grow: 1;
+        object-fit: contain;
+      }
+    }
+
     .card-body {
       display: flex;
-      flex-flow: row wrap;
+      flex-flow: column wrap;
       padding: 30px;
-    }
-    header {
-      flex: 100%;
-    }
-    .meta {
-      margin-bottom: 22px;
-    }
-    .chips {
-      align-self: flex-end;
-    }
-    .featured-image {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
 
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      overflow: hidden;
-      width: 100%;
-      height: 300px; // only for mobile, vertical cards: flex-direction: column;
-    }
-  }
-
-  // Horizontal kicks in
-  @media only screen and (min-width: 768px) {
-    .card {
-      flex-direction: row;
-      max-height: 279px; // desktop horizontal cards with featured image
-      h3 {
-        font-size: calc(100% + 1vw);
-      }
-      .featured-image {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        border-top-right-radius: 0;
-        max-width: 390px;
-        max-height: 279px; // desktop horizontal cards with featured image
-      }
-    }
-  }
-
-  // monitor screen sizes
-  @media only screen and (min-width: 1280px) {
-    .card {
-      h3 {
-        font-size: 32px;
-      }
-    }
-  }
-
-  // Typography
-  * {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-  h3 {
-    font-size: 32px;
-    line-height: 1.2;
-    font-weight: bold;
-    color: #222;
-    margin: 0.5em 0;
-  }
-  .pre-heading {
-    color: #444;
-    font-size: 20px;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  .meta {
-    color: #555;
-    font-size: 16px;
-    text-transform: uppercase;
-  }
-  .author {
-    text-transform: uppercase;
-  }
-
-  // NON-CARD STYLES
-  ul {
-    display: block;
-    margin: 0 auto;
-    max-width: 1160px;
-    padding: 30px;
-  }
-  a {
-    text-decoration: none;
-  }
-
-  // Recruitler.com's _chips.scss
-  // container for chips
-  .chips {
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-    // hide scrollbars chrome / IE10+ & Edge
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -ms-overflow-style: none;
-  }
-  // single chips
-  .chip {
-    display: inline-block;
-    position: relative;
-    font-size: 16px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4;
-    white-space: nowrap;
-    color: white;
-    background: #009dff;
-    border-radius: 25px;
-    margin-right: 8px;
-    padding: 5px 12px;
-    max-height: 32px;
-
-    &.large {
-      text-transform: uppercase;
-      color: black;
-      border: 1px solid #e0e0e0;
-      background: white;
-      padding: 10px 15px;
-      max-height: 44px;
-    }
-    input {
-      margin-bottom: 0 !important;
-      height: 22px !important;
-      background-color: transparent !important;
-      padding: 3px 0 0 0 !important;
-      &::placeholder {
-        color: black;
+      .card-pre-heading {
+        color: ${(props) => props.theme.colors.grey2};
+        font-size: ${(props) => props.theme.fontSizes.md}px;
+        font-weight: 400;
         text-transform: uppercase;
-        font-size: 16px;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        margin: 10px 0;
+      }
+
+      .card-title {
+        font-size: ${(props) => props.theme.fontSizes.xl}px;
+        font-weight: 800;
+      }
+
+      .card-description {
+        font-size: ${(props) => props.theme.fontSizes.md}px;
+        margin: 20px 0px;
+      }
+
+      .card-chips-container {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        align-self: flex-start;
+        margin-top: auto;
       }
     }
   }
-  a.chip {
-    cursor: pointer;
-    &:hover,
-    &:visited,
-    &:active {
-      color: white;
-    }
-  }
-  a.chip.large {
-    &:visited,
-    &:hover,
-    &:active {
-      color: black;
+
+  @media only screen and (max-width: 768px) {
+    .card {
+      grid-template-columns: 1fr;
     }
   }
 `;

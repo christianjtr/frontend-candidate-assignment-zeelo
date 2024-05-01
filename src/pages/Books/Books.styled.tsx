@@ -5,7 +5,7 @@ export const StyledBooks = styled.div`
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: var(--gap);
     row-gap: var(--gap);
     padding: 20px;
@@ -17,7 +17,7 @@ export const StyledBooks = styled.div`
     margin-bottom: 30px;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 425px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     .grid-container {
       grid-template-columns: 1fr;
     }

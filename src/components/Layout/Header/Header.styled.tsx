@@ -20,7 +20,7 @@ export const StyledHeader = styled.div`
     text-decoration: none;
     background: linear-gradient(
       45deg,
-      ${(props) => props.theme.colors.orange} 10%,
+      ${(props) => props.theme.colors.orange} 1%,
       ${(props) => props.theme.colors.pink} 100%
     );
     background-clip: text;

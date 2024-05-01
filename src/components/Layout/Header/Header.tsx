@@ -16,7 +16,7 @@ export function Header() {
         <nav>
           <a href="#" onClick={handleOnClickBrandLogo} role="button" className="link-to-home" aria-label="Link to home">
             <img src={BookImage} alt="Brand logo" className="logo" />
-            <span>My Library</span>
+            <span>Books</span>
           </a>
         </nav>
       </header>

@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   border-radius: 8px;
   background-image: linear-gradient(
     45deg,
-    ${(props) => props.theme.colors.orange} 10%,
+    ${(props) => props.theme.colors.orange} 1%,
     ${(props) => props.theme.colors.pink} 100%
   );
 

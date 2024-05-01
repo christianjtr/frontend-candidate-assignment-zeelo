@@ -15,7 +15,8 @@ export default function BookCard(props: BookCardProps) {
 
   const formattedPrice = formatAsCurrency(price ?? 0);
 
-  const handleOnClick = (): void => {
+  const handleOnClick = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+    event.preventDefault();
     if (typeof onClickCallback === 'function') {
       onClickCallback(id);
     }
@@ -27,14 +28,12 @@ export default function BookCard(props: BookCardProps) {
         <img src={coverUrl} alt={title} />
       </figure>
       <div className="card-body">
+        <span className="card-price">{formattedPrice}</span>
+        <span className="card-pre-header">{author}</span>
         <h2>{title}</h2>
-        <p>
-          <span>{author}</span>
-          <span>{formattedPrice}</span>
-        </p>
-        <button type="button" onClick={handleOnClick}>
-          Button
-        </button>
+        <a href="#" role="button" aria-label={`Link to ${title} detail`} onClick={handleOnClick}>
+          See details
+        </a>
       </div>
     </StyledBookCard>
   );
