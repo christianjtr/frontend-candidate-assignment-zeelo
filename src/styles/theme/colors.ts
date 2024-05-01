@@ -13,8 +13,8 @@ export const success = '#118756';
 export const warning = '#ee7400';
 export const danger = '#EA064A';
 
-export const orange = 'rgba(240, 59, 136, 1)';
-export const pink = 'rgba(247, 145, 66, 1)';
+export const pink = 'rgba(240, 59, 136, 1)';
+export const orange = 'rgba(247, 145, 66, 1)';
 
 export default {
   primary,
