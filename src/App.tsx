@@ -5,14 +5,12 @@ import './App.css';
 
 function App() {
   return (
-    <>
-      <Router>
-        <Header />
-        <Body>
-          <AppRoutes />
-        </Body>
-      </Router>
-    </>
+    <Router>
+      <Header />
+      <Body>
+        <AppRoutes />
+      </Body>
+    </Router>
   );
 }
 

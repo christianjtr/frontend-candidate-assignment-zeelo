@@ -1,6 +1,6 @@
 import BaseEntity from './BaseEntity';
 
-interface GenreCollection<T> {
+export interface GenreCollection<T> {
   length: 3;
   [index: number]: T;
 }
