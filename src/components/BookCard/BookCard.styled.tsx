@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledBookCard = styled.div`
   --img-scale: 1;
-  --title-color: black;
 
   position: relative;
   border-radius: 16px;
@@ -11,7 +10,7 @@ export const StyledBookCard = styled.div`
 
   h2 {
     margin: 0 0 18px 0;
-    color: var(--title-color);
+    color: ${(props) => props.theme.colors.dark};
   }
 
   figure {
@@ -26,7 +25,7 @@ export const StyledBookCard = styled.div`
     transform: scale(var(--img-scale));
   }
 
-  .body {
+  .card-body {
     padding: 16px;
   }
 `;

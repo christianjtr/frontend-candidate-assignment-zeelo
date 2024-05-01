@@ -26,7 +26,7 @@ export default function BookCard(props: BookCardProps) {
       <figure>
         <img src={coverUrl} alt={title} />
       </figure>
-      <div className="body">
+      <div className="card-body">
         <h2>{title}</h2>
         <p>
           <span>{author}</span>

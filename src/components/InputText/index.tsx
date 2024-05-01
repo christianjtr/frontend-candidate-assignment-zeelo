@@ -1,3 +1,1 @@
-import { InputText } from './InputText.Styles';
-
-export default InputText;
+export { InputText } from './InputText.Styles';
