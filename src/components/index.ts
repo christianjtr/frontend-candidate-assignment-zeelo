@@ -4,3 +4,4 @@ export { InputText } from './InputText';
 export { PageHeader } from './PageHeader';
 export { Title } from './Title';
 export { Subtitle } from './Subtitle';
+export { Chip } from './Chip';
