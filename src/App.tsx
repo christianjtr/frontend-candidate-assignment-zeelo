@@ -1,16 +1,18 @@
 import { HashRouter as Router } from 'react-router-dom';
 import { AppRoutes } from './routes/AppRoutes';
-import BooksContext from './context/BooksContext';
-import { findBooks } from './app/application/api/findBooks';
+import { Header, Body } from '@components/Layout';
 import './App.css';
 
 function App() {
   return (
-    <BooksContext.Provider value={{ findBooks }}>
+    <>
       <Router>
-        <AppRoutes />
+        <Header />
+        <Body>
+          <AppRoutes />
+        </Body>
       </Router>
-    </BooksContext.Provider>
+    </>
   );
 }
 
