@@ -1,3 +1,3 @@
-import Button from './Button.Styles';
+import { default as Button } from './Button';
 
 export default Button;

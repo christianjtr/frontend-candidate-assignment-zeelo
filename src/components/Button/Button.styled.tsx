@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const StyledButton = styled.button`
   width: fit-content;
   min-width: 80px;
   height: 40px;
@@ -13,13 +13,19 @@ const Button = styled.button`
   border: unset;
   border-radius: 8px;
   background-image: linear-gradient(
-    to right,
-    ${(props) => props.theme.colors.primary} 50%,
-    ${(props) => props.theme.colors.secondary} 100%
+    45deg,
+    ${(props) => props.theme.colors.orange} 10%,
+    ${(props) => props.theme.colors.pink} 100%
   );
+
+  color: white;
+  font-size: ${(props) => props.theme.fontSizes.sm}px;
+  font-weight: 800;
 
   &:hover {
     cursor: pointer;
+    box-shadow: 0 1px 5px rgba(33, 33, 33, 0.5);
+    transition: box-shadow 300ms;
 
     &:disabled {
       cursor: not-allowed;
@@ -27,4 +33,4 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export default StyledButton;
