@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import WaveSVG from '@assets/wave.svg';
 
 export const StyledNewBook = styled.div`
   .form-container {
@@ -13,5 +14,12 @@ export const StyledNewBook = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+
+  .waves {
+    background-image: url(${WaveSVG});
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 `;

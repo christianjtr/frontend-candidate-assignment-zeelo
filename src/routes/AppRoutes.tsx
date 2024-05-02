@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Books, BookDetails, NewBook, NotFound } from '@pages';
+import { Books, BookDetails, NewBook, Profile, NotFound } from '@pages';
 
 export const AppRoutes: React.FC = (): React.ReactElement => {
   return (
@@ -11,6 +11,7 @@ export const AppRoutes: React.FC = (): React.ReactElement => {
         <Route path="/books/new" element={<NewBook />} />
         <Route path="/books/edit/:bookId" element={<NewBook isEditMode />} />
       </Route>
+      <Route path="/profile" element={<Profile />} />
       <Route path="/" element={<Navigate to="/books" replace />} />
       <Route path="/*" element={<NotFound />} />
     </Routes>

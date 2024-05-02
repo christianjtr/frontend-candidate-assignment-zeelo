@@ -53,7 +53,7 @@ export default function NewBook(props: NewBookProps) {
           <Title>{`${isEditMode ? 'Edit book' : 'Add new book'}`}</Title>
         </div>
       </PageHeader>
-      <div className="form-container">
+      <div className="form-container waves">
         <AddNewBookForm onSubmit={handleOnSubmit} isEditMode={isEditMode} initialValues={book!} />
       </div>
     </StyledNewBook>

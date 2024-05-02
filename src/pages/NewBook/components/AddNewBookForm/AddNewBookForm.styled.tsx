@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledAddNewBookForm = styled.div`
-  width: 65%;
+  width: 75%;
 
   h3 {
     font-size: ${(props) => props.theme.fontSizes.lg}px;
