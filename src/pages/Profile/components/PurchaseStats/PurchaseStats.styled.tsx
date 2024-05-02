@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledStats = styled.div`
+export const StyledPurchaseStats = styled.div`
   .stats-card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

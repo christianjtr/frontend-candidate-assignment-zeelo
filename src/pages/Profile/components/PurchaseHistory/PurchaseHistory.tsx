@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import type { Purchase } from '@app-types/Purchase';
 import { formatAsCurrency } from '@utils/formatNumber';
 import { formatDate } from '@utils/formatDates';
-import { StyledPurchase } from './Purchase.styled';
+import { StyledPurchaseHistory } from './PurchaseHistory.styled';
 
-export interface PurchaseProps {
+export interface PurchaseHistory {
   purchase: Purchase;
 }
 
-export default function Purchase(props: PurchaseProps) {
+export default function PurchaseHistory(props: PurchaseHistory) {
   const { purchase } = props;
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export default function Purchase(props: PurchaseProps) {
   };
 
   return (
-    <StyledPurchase>
+    <StyledPurchaseHistory>
       <div className="purchase-order-summary">
         <div className="purchase-header">
           <h1>Order Summary</h1>
@@ -54,6 +54,6 @@ export default function Purchase(props: PurchaseProps) {
           </div>
         </div>
       ))}
-    </StyledPurchase>
+    </StyledPurchaseHistory>
   );
 }

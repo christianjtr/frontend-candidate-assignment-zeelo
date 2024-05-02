@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledPurchase = styled.div`
+export const StyledPurchaseHistory = styled.div`
   .purchase-order-summary {
     background-color: ${(props) => props.theme.colors.grey5};
     padding: 10px;

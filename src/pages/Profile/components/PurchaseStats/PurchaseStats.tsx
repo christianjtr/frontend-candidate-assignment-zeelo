@@ -3,13 +3,13 @@ import Plotly, { Data } from 'plotly.js-dist';
 import { formatAsCurrency } from '@utils/formatNumber';
 import Book from '@app/domain/Book';
 import type { Genre } from '@app-types/Genre';
-import { StyledStats } from './Stats.styled';
+import { StyledPurchaseStats } from './PurchaseStats.styled';
 
-export interface StatsProps {
+export interface PurchaseStatsProps {
   purchasedBooks: Book[];
 }
 
-export default function Stats(props: StatsProps) {
+export default function Stats(props: PurchaseStatsProps) {
   const { purchasedBooks } = props;
   const chartWrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -66,7 +66,7 @@ export default function Stats(props: StatsProps) {
   }, [chartWrapperRef, bookGenres]);
 
   return (
-    <StyledStats>
+    <StyledPurchaseStats>
       <div className="stats-card-container">
         <div>
           <small>Books purchased</small>
@@ -91,6 +91,6 @@ export default function Stats(props: StatsProps) {
         </div>
       </div>
       <small>*Consider books may belong to multiple genres.</small>
-    </StyledStats>
+    </StyledPurchaseStats>
   );
 }

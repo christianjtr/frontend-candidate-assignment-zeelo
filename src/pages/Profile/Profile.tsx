@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Title, PageHeader } from '@components';
 import { useFetchPurchases } from '@hooks/useFetchPurchases';
-import Purchase from './components/Purchase/Purchase';
-import Stats from './components/Stats/Stats';
+import { PurchaseHistory, PurchaseStats } from './components';
 import { StyledProfile } from './Profile.styled';
 
 export default function Profile() {
@@ -28,13 +27,13 @@ export default function Profile() {
         <div className="purchase-container">
           <h3>Purchases</h3>
           {purchases.map((purchase) => (
-            <Purchase key={purchase.id} purchase={purchase} />
+            <PurchaseHistory key={purchase.id} purchase={purchase} />
           ))}
         </div>
         <div>
           <div className="stats-container">
             <h3>Stats</h3>
-            <Stats purchasedBooks={purchasedBooks} />
+            <PurchaseStats purchasedBooks={purchasedBooks} />
           </div>
         </div>
       </div>

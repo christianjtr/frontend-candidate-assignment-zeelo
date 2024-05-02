@@ -5,3 +5,4 @@ export { PageHeader } from './PageHeader';
 export { Title } from './Title';
 export { Subtitle } from './Subtitle';
 export { Chip } from './Chip';
+export { LoaderSpinner } from './LoaderSpinner';
