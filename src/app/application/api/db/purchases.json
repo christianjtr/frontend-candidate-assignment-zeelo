@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "books": [
+      {
+        "id": 1,
+        "title": "Lord of the Rings - The fellowship of the ring",
+        "author": "J.R.R. Tolkien",
+        "price": 49.99,
+        "cover_url": "https://m.media-amazon.com/images/I/51HNV1J3UyL._SL500_.jpg",
+        "description": "",
+        "genres": [
+          { "id": 1, "genre": "Fiction" },
+          { "id": 6, "genre": "Fantasy" },
+          { "id": 3, "genre": "Mystery" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Lord of the Rings - The two towers",
+        "author": "J.R.R. Tolkien",
+        "price": 39.99,
+        "cover_url": "https://m.media-amazon.com/images/I/41sMe18lj+L._SL500_.jpg",
+        "description": "",
+        "genres": [
+          { "id": 1, "genre": "Fiction" },
+          { "id": 6, "genre": "Fantasy" },
+          { "id": 3, "genre": "Mystery" }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Lord of the Rings - The return of the king",
+        "author": "J.R.R. Tolkien",
+        "price": 45.99,
+        "cover_url": "https://m.media-amazon.com/images/I/51VYSm49SUL._SL500_.jpg",
+        "description": "",
+        "genres": [
+          { "id": 1, "genre": "Fiction" },
+          { "id": 6, "genre": "Fantasy" },
+          { "id": 3, "genre": "Mystery" }
+        ]
+      }
+    ],
+    "date": "2024-05-01",
+    "total": 135.97
+  },
+  {
+    "id": 2,
+    "books": [
+      {
+        "id": 9,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "price": 12.99,
+        "cover_url": "https://m.media-amazon.com/images/I/416K+gR7RLL._SL500_.jpg",
+        "description": "",
+        "genres": [
+          { "id": 5, "genre": "Romance" },
+          { "id": 13, "genre": "Drama" }
+        ]
+      }
+    ],
+    "date": "2024-03-10",
+    "total": 12.99
+  },
+  {
+    "id": 3,
+    "books": [
+      {
+        "id": 8,
+        "title": "The Divine Comedy",
+        "author": "Dante Alighieri",
+        "price": 23.49,
+        "cover_url": "https://m.media-amazon.com/images/I/31nCuk0puCL._SL500_.jpg",
+        "description": "",
+        "genres": [
+          { "id": 8, "genre": "Historical Fiction" },
+          { "id": 12, "genre": "Poetry" },
+          { "id": 27, "genre": "Mythology" }
+        ]
+      }
+    ],
+    "date": "2024-04-20",
+    "total": 23.49
+  }
+]
