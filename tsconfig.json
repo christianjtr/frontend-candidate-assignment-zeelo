@@ -35,7 +35,8 @@
       "@services/*": ["./src/services/*"],
       "@styles/*": ["./src/styles/*"],
       "@app-types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "plotly.js-dist": ["./node_modules/@types/plotly.js"]
     }
   },
   "include": ["src"],
