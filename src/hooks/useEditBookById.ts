@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { create } from '@services/apis/book/book.services';
+import { editById } from '@services/apis/book/book.services';
 import Book from '@app/domain/Book';
 import type { BookAPIRequest } from '@app-types/Book';
 import { toast } from 'sonner';
 
-export interface UseCreateBookInterface {
-  createBook: (data: Omit<Book, 'id'>) => Promise<void>;
+export interface UseEditBookByIdInterface {
+  editBook: (id: number, data: Omit<Book, 'id'>) => Promise<void>;
   isLoading: boolean;
   hasError: boolean;
 }
 
-export const useCreateBook = (): UseCreateBookInterface => {
+export const useEditBookById = (): UseEditBookByIdInterface => {
   const [message, setMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
@@ -26,12 +26,12 @@ export const useCreateBook = (): UseCreateBookInterface => {
     };
   };
 
-  const createBook = async (data: Omit<Book, 'id'>): Promise<void> => {
+  const editBook = async (id: number, data: Omit<Book, 'id'>): Promise<void> => {
     setIsLoading(true);
 
     try {
       const payload = convertToAPIEntity(data);
-      const { message, isSuccess } = await create(payload);
+      const { message, isSuccess } = await editById(id, payload);
       setIsLoading(false);
       setHasError(!isSuccess);
       setMessage(message);
@@ -52,7 +52,7 @@ export const useCreateBook = (): UseCreateBookInterface => {
   }, [message]);
 
   return {
-    createBook,
+    editBook,
     isLoading,
     hasError,
   };

@@ -19,7 +19,9 @@ export default function BookDetails() {
     navigate('/', { replace: true });
   };
 
-  const handleOnClickEditButton = (): void => {};
+  const handleOnClickEditButton = (): void => {
+    navigate(`/books/edit/${book?.id}`);
+  };
 
   const handleOnClickDeleteButton = (): void => {
     if (book) {

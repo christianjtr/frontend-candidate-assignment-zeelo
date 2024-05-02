@@ -9,6 +9,7 @@ export const AppRoutes: React.FC = (): React.ReactElement => {
         <Route index element={<Books />} />
         <Route path=":bookId" element={<BookDetails />} />
         <Route path="/books/new" element={<NewBook />} />
+        <Route path="/books/edit/:bookId" element={<NewBook isEditMode />} />
       </Route>
       <Route path="/" element={<Navigate to="/books" replace />} />
       <Route path="/*" element={<NotFound />} />

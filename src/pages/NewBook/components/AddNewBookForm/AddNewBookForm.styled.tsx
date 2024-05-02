@@ -40,6 +40,12 @@ export const StyledAddNewBookForm = styled.div`
     min-height: 150px;
   }
 
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .form-field {
     margin: 10px 0px;
 

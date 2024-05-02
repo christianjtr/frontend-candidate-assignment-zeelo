@@ -7,17 +7,17 @@ import { failRandomly, ErrorCode, CustomError } from '@utils/errors';
 const { BASE_BOOKS_API_URL } = config;
 
 async function getBooks(pagination?: PaginatedType): Promise<BookAPIResponse.Book[]> {
-  const { page: _page = 1, perPage: _limit } = pagination || {};
+  const { page: _page, perPage: _limit } = pagination || {};
 
   const qs = `?${queryString.stringify({ _page, _limit }, { skipNull: true })}`;
 
   // Mocked failure implementation...
-  if (failRandomly()) {
-    const error: { error: CustomError } = {
-      error: { code: ErrorCode.SOMETHING_WENT_WRONG, message: 'Error fetching books' },
-    };
-    throw error;
-  }
+  // if (failRandomly()) {
+  //   const error: { error: CustomError } = {
+  //     error: { code: ErrorCode.SOMETHING_WENT_WRONG, message: 'Error fetching books' },
+  //   };
+  //   throw error;
+  // }
 
   try {
     const response = await fetch(`${BASE_BOOKS_API_URL}/books${qs.length > 0 ? qs : ''}`);
@@ -56,6 +56,23 @@ async function create(payload: BookAPIRequest.Book): Promise<BookAPIResponse.Gen
   }
 }
 
+async function editById(id: number, payload: BookAPIRequest.Book): Promise<BookAPIResponse.GenericResponse<unknown>> {
+  try {
+    const response = await fetch(`${BASE_BOOKS_API_URL}/books/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    return {
+      message: response.ok ? `Book "${payload.title}" was edited` : 'Unable to edit this book',
+      isSuccess: response.ok,
+    };
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function deleteBookById(id: number): Promise<BookAPIResponse.GenericResponse<unknown>> {
   try {
     const response = await fetch(`${BASE_BOOKS_API_URL}/books/${id}`, { method: 'DELETE' });
@@ -69,4 +86,4 @@ async function deleteBookById(id: number): Promise<BookAPIResponse.GenericRespon
   }
 }
 
-export { getBooks, getBookById, create, deleteBookById };
+export { getBooks, getBookById, create, editById, deleteBookById };
