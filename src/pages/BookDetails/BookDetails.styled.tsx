@@ -89,12 +89,6 @@ export const StyledBookDetails = styled.div`
     }
   }
 
-  .actions-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
   @media only screen and (max-width: 768px) {
     .card {
       grid-template-columns: 1fr;

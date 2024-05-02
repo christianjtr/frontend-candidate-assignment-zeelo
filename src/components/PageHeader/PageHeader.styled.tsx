@@ -5,4 +5,10 @@ export const StyledPageHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
+
+  .grouped-elements {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 `;

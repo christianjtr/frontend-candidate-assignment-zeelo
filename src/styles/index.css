@@ -108,6 +108,7 @@ legend {
   --success-color: #118756;
   --error-color: #ea064a;
   --warning-color: #ee7400;
+  --orange-color: rgba(247, 145, 66, 1);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -128,6 +129,7 @@ legend {
   padding: 15px;
   color: white;
   font-size: 14px;
+  border: none;
 
   &.toaster--standard {
     color: black;
@@ -149,4 +151,43 @@ legend {
   &.toaster--error {
     background: var(--error-color);
   }
+}
+
+.go-back {
+  color: var(--orange-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding-left: 15px;
+  position: relative;
+  text-decoration: none;
+}
+.go-back::before,
+.go-back::after {
+  content: '';
+  display: block;
+  left: 0px;
+  position: absolute;
+  top: 50%;
+  transition: left 0.1s;
+}
+.go-back::before {
+  border-color: var(--orange-color);
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+  height: 6px;
+  margin-top: -3px;
+  width: 6px;
+
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.go-back::after {
+  background: var(--orange-color);
+  height: 2px;
+  width: 11px;
+}
+.go-back:hover::before,
+.go-back:hover::after {
+  left: -3px;
 }

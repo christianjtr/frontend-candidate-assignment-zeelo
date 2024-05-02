@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Title, PageHeader } from '@components';
 import { AddNewBookForm } from './components/AddNewBookForm';
 import { useCreateBook } from '@hooks/useCreateBook';
@@ -15,6 +13,7 @@ export interface NewBookProps {
 
 export default function NewBook(props: NewBookProps) {
   const { isEditMode = false } = props;
+  const navigate = useNavigate();
   const { bookId } = useParams();
 
   const { book, isLoading: isLoadingBook, hasError: hasErrorFetchingBook, refetch } = useFetchBook(+bookId!);
@@ -40,7 +39,19 @@ export default function NewBook(props: NewBookProps) {
   return (
     <StyledNewBook>
       <PageHeader>
-        <Title>{`${isEditMode ? 'Edit book' : 'Add new book'}`}</Title>
+        <div className="grouped-elements">
+          <Link
+            className="go-back"
+            to={'..'}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+          >
+            Back
+          </Link>
+          <Title>{`${isEditMode ? 'Edit book' : 'Add new book'}`}</Title>
+        </div>
       </PageHeader>
       <div className="form-container">
         <AddNewBookForm onSubmit={handleOnSubmit} isEditMode={isEditMode} initialValues={book!} />

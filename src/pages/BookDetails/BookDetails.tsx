@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Button, PageHeader, Chip, Title } from '@components';
 import { useFetchBook } from '@hooks/useFetchBookById';
@@ -14,10 +14,6 @@ export default function BookDetails() {
 
   const { book, isLoading, hasError } = useFetchBook(+bookId!);
   const { deleteBook, isLoading: isDeletingBook, message, hasError: hasErrorAtDeletingBook } = useDeleteBookById();
-
-  const handleOnClickBackToHomeButton = (): void => {
-    navigate('/', { replace: true });
-  };
 
   const handleOnClickEditButton = (): void => {
     navigate(`/books/edit/${book?.id}`);
@@ -69,8 +65,13 @@ export default function BookDetails() {
   return (
     <StyledBookDetails>
       <PageHeader>
-        <Title>Book details</Title>
-        <div className="actions-buttons-container">
+        <div className="grouped-elements">
+          <Link className="go-back" to={'/'}>
+            Home
+          </Link>
+          <Title>Book details</Title>
+        </div>
+        <div className="grouped-elements">
           <Button
             id="btn-edit"
             name="btn-edit"
