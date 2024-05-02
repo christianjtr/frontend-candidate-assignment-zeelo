@@ -1,4 +1,4 @@
-import type { BookAPIResponse } from '@app-types/Book';
+import type { BookAPIResponse, BookAPIRequest } from '@app-types/Book';
 import config from './config';
 
 const { BASE_BOOKS_API_URL } = config;
@@ -23,4 +23,34 @@ async function getBookById(id: number): Promise<BookAPIResponse.Book> {
   }
 }
 
-export { getBooks, getBookById };
+async function create(payload: BookAPIRequest.Book): Promise<BookAPIResponse.GenericResponse<unknown>> {
+  try {
+    const response = await fetch(`${BASE_BOOKS_API_URL}/books`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    return {
+      message: response.ok ? 'A new book was created' : 'Unable to create a book',
+      isSuccess: response.ok,
+    };
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deleteBookById(id: number): Promise<BookAPIResponse.GenericResponse<unknown>> {
+  try {
+    const response = await fetch(`${BASE_BOOKS_API_URL}/books/${id}`, { method: 'DELETE' });
+
+    return {
+      message: response.ok ? 'Book was deleted' : 'Unable to delete the book',
+      isSuccess: response.ok,
+    };
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { getBooks, getBookById, create, deleteBookById };

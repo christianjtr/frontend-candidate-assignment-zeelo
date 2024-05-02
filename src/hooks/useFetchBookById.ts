@@ -18,8 +18,8 @@ export const useFetchBook = (id: number): UseFetchBookInterface => {
 
     try {
       const response = await getBookById(id);
-      const { id: bookId, title, author, price, cover_url } = response;
-      const responseDTO = new Book(bookId, title, author, price, cover_url);
+      const { id: bookId, title, author, price, cover_url, genres, description } = response;
+      const responseDTO = new Book(bookId, title, author, price, cover_url, genres, description);
       setBooks(responseDTO);
     } catch (error) {
       setHasError(true);
@@ -30,8 +30,8 @@ export const useFetchBook = (id: number): UseFetchBookInterface => {
   };
 
   useEffect(() => {
-    fetchBook();
-  }, []);
+    if (id) fetchBook();
+  }, [id]);
 
   return {
     book,

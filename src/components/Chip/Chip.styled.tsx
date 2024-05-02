@@ -12,17 +12,5 @@ export const StyledChip = styled.div`
   margin-right: 8px;
   padding: 5px 12px;
   max-height: 32px;
-
-  /* .chips {
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-    // hide scrollbars chrome / IE10+ & Edge
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -ms-overflow-style: none;
-  } */
+  text-transform: capitalize;
 `;

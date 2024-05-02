@@ -19,7 +19,7 @@ const StyledButton = styled.button`
   );
 
   color: white;
-  font-size: ${(props) => props.theme.fontSizes.sm}px;
+  font-size: ${(props) => props.theme.fontSizes.md}px;
   font-weight: 800;
 
   &:hover {
@@ -29,6 +29,17 @@ const StyledButton = styled.button`
 
     &:disabled {
       cursor: not-allowed;
+    }
+  }
+
+  &.secondary {
+    background: ${(props) => props.theme.colors.light};
+    color: ${(props) => props.theme.colors.grey1};
+    border: 1px solid ${(props) => props.theme.colors.grey3};
+
+    &:disabled {
+      cursor: not-allowed;
+      color: ${(props) => props.theme.colors.grey3};
     }
   }
 `;

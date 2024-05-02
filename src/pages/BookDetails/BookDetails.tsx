@@ -1,27 +1,94 @@
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button, PageHeader, Chip } from '@components';
+import { toast } from 'sonner';
+import { Button, PageHeader, Chip, Title } from '@components';
 import { useFetchBook } from '@hooks/useFetchBookById';
+import { useDeleteBookById } from '@hooks/useDeleteBookById';
 import { formatAsCurrency } from '@utils/formatNumber';
 import { StyledBookDetails } from './BookDetails.styled';
 
 export default function BookDetails() {
   const navigate = useNavigate();
   const { bookId } = useParams<string>();
+  const [isDeleteToastOpened, setIsDeleteToastOpened] = useState<boolean>(false);
 
   const { book, isLoading, hasError } = useFetchBook(+bookId!);
+  const { deleteBook, isLoading: isDeletingBook, message, hasError: hasErrorAtDeletingBook } = useDeleteBookById();
 
   const handleOnClickBackToHomeButton = (): void => {
     navigate('/', { replace: true });
   };
 
+  const handleOnClickEditButton = (): void => {};
+
+  const handleOnClickDeleteButton = (): void => {
+    if (book) {
+      toast('Are you sure you want to delete this book?', {
+        duration: 10000,
+        position: 'bottom-center',
+        className: 'toaster toaster--standard',
+        action: {
+          label: 'Delete',
+          onClick: () => deleteBook(book.id),
+        },
+        cancel: {
+          label: 'Cancel',
+          onClick: () => {
+            toast.dismiss();
+            setIsDeleteToastOpened(false);
+          },
+        },
+        onAutoClose: () => setIsDeleteToastOpened(false),
+        onDismiss: () => setIsDeleteToastOpened(false),
+      });
+      setIsDeleteToastOpened(true);
+    }
+  };
+
   const formattedPrice = formatAsCurrency(book?.price ?? 0);
+
+  useEffect(() => {
+    if (message) {
+      toast(message, {
+        className: `toaster ${hasErrorAtDeletingBook ? 'toaster--error' : 'toaster--success'}`,
+      });
+      navigate('/', { replace: true });
+    }
+  }, [message]);
+
+  useEffect(() => {
+    return () => {
+      toast.dismiss();
+    };
+  }, []);
 
   if (isLoading) return null;
 
   return (
     <StyledBookDetails>
       <PageHeader>
-        <Button onClick={handleOnClickBackToHomeButton}>Back</Button>
+        <Title>Book details</Title>
+        <div className="actions-buttons-container">
+          <Button
+            id="btn-edit"
+            name="btn-edit"
+            className="secondary"
+            onClick={handleOnClickEditButton}
+            aria-label="Edit book buton"
+          >
+            Edit
+          </Button>
+          <Button
+            id="btn-delete"
+            name="btn-delete"
+            className="secondary"
+            onClick={handleOnClickDeleteButton}
+            aria-label="Delete book buton"
+            disabled={isDeleteToastOpened}
+          >
+            Delete
+          </Button>
+        </div>
       </PageHeader>
       <div className="card">
         <div className="ribbon">{formattedPrice}</div>

@@ -7,6 +7,10 @@ export default function Books() {
   const navigate = useNavigate();
   const { books, isLoading, hasError } = useFetchBooks();
 
+  const handleOnClickOnNewBook = (): void => {
+    navigate(`/books/new`);
+  };
+
   const handleOnClickBookItem: <T>(bookId: T) => void = (bookId): void => {
     navigate(`/books/${bookId}`);
   };
@@ -17,7 +21,7 @@ export default function Books() {
     <StyledBooks>
       <PageHeader>
         <Title>Available books</Title>
-        <Button onClick={() => {}}>Add new book</Button>
+        <Button onClick={handleOnClickOnNewBook}>Add new book</Button>
       </PageHeader>
       <div className="grid-container">
         {books?.map((book) => <BookCard key={book.id} book={book} onClick={handleOnClickBookItem} />)}

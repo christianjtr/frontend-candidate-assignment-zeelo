@@ -2,9 +2,9 @@ import BaseEntity from './BaseEntity';
 
 export type GenreCollection<T> = [T, T, T, ...T[]];
 export default class Book extends BaseEntity {
-  title?: string = '';
-  author?: string = '';
-  price?: number = 0;
+  title: string = '';
+  author: string = '';
+  price: number = 0;
   coverUrl?: string = '';
   genres?: GenreCollection<string>;
   description?: string = '';

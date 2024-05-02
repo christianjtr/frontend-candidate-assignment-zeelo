@@ -19,11 +19,6 @@ export const StyledBookCard = styled.div`
     object-fit: cover;
   }
 
-  /* &:hover {
-    transform: translateY(-10px) scale(1.005) translateZ(0);
-    transition: transform 400ms;
-  } */
-
   .card-body {
     padding: 20px;
     min-height: 150px;

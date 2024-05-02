@@ -11,6 +11,7 @@ export const StyledBookDetails = styled.div`
     grid-template-columns: 300px 1fr;
     margin-bottom: 30px;
     position: relative;
+    min-height: 300px;
 
     .ribbon {
       font-size: ${(props) => props.theme.fontSizes.lg}px;
@@ -86,6 +87,12 @@ export const StyledBookDetails = styled.div`
         margin-top: auto;
       }
     }
+  }
+
+  .actions-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   @media only screen and (max-width: 768px) {

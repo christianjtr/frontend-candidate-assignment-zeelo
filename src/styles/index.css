@@ -105,6 +105,10 @@ legend {
 }
 
 :root {
+  --success-color: #118756;
+  --error-color: #ea064a;
+  --warning-color: #ee7400;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -118,4 +122,31 @@ legend {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.toaster {
+  padding: 15px;
+  color: white;
+  font-size: 14px;
+
+  &.toaster--standard {
+    color: black;
+    & button {
+      color: black !important;
+      background: white !important;
+      border: 1px solid #cccccc !important;
+    }
+  }
+
+  &.toaster--success {
+    background: var(--success-color);
+  }
+
+  &.toaster--warning {
+    background: var(--warning-color);
+  }
+
+  &.toaster--error {
+    background: var(--error-color);
+  }
 }
