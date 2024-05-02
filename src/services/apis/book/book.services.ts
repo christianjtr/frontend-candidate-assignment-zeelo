@@ -1,12 +1,28 @@
-import type { BookAPIResponse, BookAPIRequest } from '@app-types/Book';
+import queryString from 'query-string';
 import config from './config';
+import type { BookAPIResponse, BookAPIRequest } from '@app-types/Book';
+import type { PaginatedType } from '@app-types/Paginated';
+import { failRandomly, ErrorCode, CustomError } from '@utils/errors';
 
 const { BASE_BOOKS_API_URL } = config;
 
-async function getBooks(): Promise<BookAPIResponse.Book[]> {
+async function getBooks(pagination?: PaginatedType): Promise<BookAPIResponse.Book[]> {
+  const { page: _page = 1, perPage: _limit } = pagination || {};
+
+  const qs = `?${queryString.stringify({ _page, _limit }, { skipNull: true })}`;
+
+  // Mocked failure implementation...
+  if (failRandomly()) {
+    const error: { error: CustomError } = {
+      error: { code: ErrorCode.SOMETHING_WENT_WRONG, message: 'Error fetching books' },
+    };
+    throw error;
+  }
+
   try {
-    const response = await fetch(`${BASE_BOOKS_API_URL}/books`);
+    const response = await fetch(`${BASE_BOOKS_API_URL}/books${qs.length > 0 ? qs : ''}`);
     const books = await response.json();
+
     return books;
   } catch (error) {
     throw error;
