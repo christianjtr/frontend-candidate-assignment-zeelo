@@ -13,12 +13,25 @@ export interface AddNewBookFormProps {
 export default function AddNewBookForm(props: AddNewBookFormProps) {
   const { onSubmit, isEditMode = false, initialValues = undefined } = props;
 
-  const { genres, isLoading: isLoadingGenres, hasError } = useFetchGenres();
+  const { genres, isLoading: isLoadingGenres } = useFetchGenres();
 
   const formRef = useRef<HTMLFormElement>(null);
 
   const resetForm = (): void => {
     if (formRef) formRef.current?.reset();
+  };
+
+  const validateForm = (dataToValidate: Record<PropertyKey, FormDataEntryValue | FormDataEntryValue[]>): boolean => {
+    const { title, author, price, genres } = dataToValidate;
+
+    const isValidTitle = typeof title === 'string' && title.length > 0;
+    const isValidAuthor = typeof author === 'string' && author.length > 0;
+    const isValidPrice = !!price;
+    const isValidGenre = Array.isArray(genres) && genres.length >= 3;
+
+    const validations = [isValidTitle, isValidAuthor, isValidPrice, isValidGenre];
+
+    return validations.every((validation) => validation);
   };
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -35,7 +48,9 @@ export default function AddNewBookForm(props: AddNewBookFormProps) {
       dataToProcess[key] = valueToProcess;
     }
 
-    onSubmit(dataToProcess, resetForm);
+    if (validateForm(dataToProcess)) {
+      onSubmit(dataToProcess, resetForm);
+    }
   };
 
   return (
@@ -87,15 +102,21 @@ export default function AddNewBookForm(props: AddNewBookFormProps) {
           <input type="url" id="coverUrl" name="coverUrl" defaultValue={initialValues?.coverUrl} autoComplete="off" />
         </fieldset>
         <fieldset className="form-field">
-          <legend>Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</legend>
-          <label htmlFor="genres">Genres</label>
-          <select id="genres" name="genres" disabled={isLoadingGenres} defaultValue={initialValues?.genres} multiple>
+          <label htmlFor="genres">
+            Genres
+            <span aria-hidden="true">*</span>
+          </label>
+          <select id="genres" name="genres" disabled={isLoadingGenres} multiple required>
             {genres?.map(({ id, genre }) => (
-              <option key={`${genre}_${id}`} value={genre}>
+              <option key={`${genre}_${id}`} selected={initialValues?.genres?.includes(genre)} value={genre}>
                 {genre}
               </option>
             ))}
           </select>
+          <span className="help-block help-block--info">Please, select at least three (3) genres.</span>
+          <span className="help-block">
+            Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.
+          </span>
         </fieldset>
         <fieldset className="form-field">
           <label htmlFor="description">Description</label>

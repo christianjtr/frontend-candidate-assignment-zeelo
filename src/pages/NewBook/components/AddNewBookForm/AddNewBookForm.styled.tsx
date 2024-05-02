@@ -46,6 +46,15 @@ export const StyledAddNewBookForm = styled.div`
     align-items: center;
   }
 
+  .help-block {
+    display: block;
+    font-size: ${(props) => props.theme.fontSizes.sm}px;
+
+    &.help-block--info {
+      color: ${(props) => props.theme.colors.pink};
+    }
+  }
+
   .form-field {
     margin: 10px 0px;
 
