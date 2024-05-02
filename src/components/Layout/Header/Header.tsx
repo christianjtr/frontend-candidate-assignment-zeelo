@@ -5,6 +5,10 @@ import { StyledHeader } from './Header.styled';
 export function Header() {
   const navigate = useNavigate();
 
+  const handleOnClickOnProfile = (): void => {
+    navigate('/profile');
+  };
+
   const handleOnClickBrandLogo = (event: React.MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
     navigate('/');
@@ -19,6 +23,15 @@ export function Header() {
             <span>Books</span>
           </a>
         </nav>
+        <div className="user-profile-wrapper">
+          <img
+            src="https://randomuser.me/api/portraits/women/82.jpg"
+            alt="User profile image"
+            className="image--cover"
+            title="Profile"
+            onClick={handleOnClickOnProfile}
+          />
+        </div>
       </header>
     </StyledHeader>
   );

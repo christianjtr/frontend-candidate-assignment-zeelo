@@ -8,9 +8,15 @@ export const StyledHeader = styled.div`
     top: 0;
     width: 100%;
     position: sticky;
-    box-shadow: 0 4px 20px hsla(207, 24%, 35%, 0.1);
+    box-shadow:
+      0 0px 1px rgba(0, 0, 0, 0.1),
+      0 2px 2px rgba(0, 0, 0, 0.1);
     background-color: white;
     z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .link-to-home {
@@ -44,6 +50,27 @@ export const StyledHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
+  }
+
+  .user-profile-wrapper {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    & img.image--cover {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid ${(props) => props.theme.colors.grey3};
+
+      object-fit: cover;
+      object-position: center right;
+
+      &:hover {
+        border-color: ${(props) => props.theme.colors.orange};
+        transition: border-color 500ms;
+      }
+    }
   }
 `;
