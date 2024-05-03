@@ -5,11 +5,12 @@ export interface LoaderSpinnerProps {
 }
 
 export default function LoaderSpinner(props: LoaderSpinnerProps) {
-  const { message = 'Loading...' } = props;
+  const { message = 'Loading' } = props;
 
   return (
-    <div>
-      <StyledLoaderSpinner>{message}</StyledLoaderSpinner>
-    </div>
+    <StyledLoaderSpinner>
+      <span className="loader" />
+      <span>{message}</span>
+    </StyledLoaderSpinner>
   );
 }

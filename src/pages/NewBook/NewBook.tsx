@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Title, PageHeader } from '@components';
+import { Title, PageHeader, LoaderSpinner } from '@components';
 import { AddNewBookForm } from './components/AddNewBookForm';
 import { useCreateBook } from '@hooks/useCreateBook';
 import { useEditBookById } from '@hooks/useEditBookById';
@@ -16,9 +16,9 @@ export default function NewBook(props: NewBookProps) {
   const navigate = useNavigate();
   const { bookId } = useParams();
 
-  const { book, isLoading: isLoadingBook, hasError: hasErrorFetchingBook, refetch } = useFetchBook(+bookId!);
-  const { createBook, isLoading: isCreatingBook, hasError: hasErrorCreatingBook } = useCreateBook();
-  const { editBook, isLoading: isEditingBook, hasError: hasErrorEditingBook } = useEditBookById();
+  const { book, isLoading: isLoadingBook, refetch } = useFetchBook(+bookId!);
+  const { createBook, isLoading: isCreatingBook } = useCreateBook();
+  const { editBook, isLoading: isEditingBook } = useEditBookById();
 
   const handleOnSubmit = async (
     data: Record<PropertyKey, FormDataEntryValue | FormDataEntryValue[]>,
@@ -34,7 +34,7 @@ export default function NewBook(props: NewBookProps) {
     callback();
   };
 
-  // if (isLoading) return null;
+  if (isLoadingBook || isCreatingBook || isEditingBook) return <LoaderSpinner />;
 
   return (
     <StyledNewBook>

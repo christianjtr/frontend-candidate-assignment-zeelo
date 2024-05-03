@@ -17,7 +17,7 @@ export const StyledNewBook = styled.div`
   }
 
   .waves {
-    background-image: url(${WaveSVG});
+    /* background-image: url(${WaveSVG}); */
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;

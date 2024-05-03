@@ -5,6 +5,7 @@ export const StyledProfile = styled.div`
     display: grid;
     grid-template-columns: minmax(100px, 1fr) 350px;
     column-gap: 20px;
+    margin-top: 30px;
   }
 
   .purchase-container,

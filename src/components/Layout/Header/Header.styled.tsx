@@ -6,8 +6,6 @@ export const StyledHeader = styled.div`
 
   .header {
     top: 0;
-    width: 100%;
-    position: sticky;
     box-shadow:
       0 0px 1px rgba(0, 0, 0, 0.1),
       0 2px 2px rgba(0, 0, 0, 0.1);
@@ -17,6 +15,7 @@ export const StyledHeader = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 5px 20px;
   }
 
   .link-to-home {

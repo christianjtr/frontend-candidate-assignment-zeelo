@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useFetchBooks } from '@hooks/useFetchBooks';
-import { Button, Title, PageHeader, BookCard } from '@components';
+import { Button, Title, PageHeader, BookCard, LoaderSpinner } from '@components';
 import { StyledBooks } from './Books.styled';
 
 export default function Books() {
   const navigate = useNavigate();
-  const { books, isLoading, hasError } = useFetchBooks();
+  const { books, isLoading } = useFetchBooks();
 
   const handleOnClickOnNewBook = (): void => {
     navigate(`/books/new`);
@@ -15,7 +15,7 @@ export default function Books() {
     navigate(`/books/${bookId}`);
   };
 
-  if (isLoading) return null;
+  if (isLoading) return <LoaderSpinner />;
 
   return (
     <StyledBooks>

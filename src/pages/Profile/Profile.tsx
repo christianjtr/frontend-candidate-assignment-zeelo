@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom';
-import { Title, PageHeader } from '@components';
+import { Title, Subtitle, PageHeader, LoaderSpinner } from '@components';
 import { useFetchPurchases } from '@hooks/useFetchPurchases';
 import { PurchaseHistory, PurchaseStats } from './components';
 import { StyledProfile } from './Profile.styled';
 
 export default function Profile() {
-  const { purchases, isLoading: isLoadingPurchases, hasError: hasErrorFetchingPurchases } = useFetchPurchases();
+  const { purchases, isLoading: isLoadingPurchases } = useFetchPurchases();
 
   const purchasedBooks = purchases
     .map((purchase) => {
       return purchase.books;
     })
     .flat();
+
+  if (isLoadingPurchases) return <LoaderSpinner />;
 
   return (
     <StyledProfile>
@@ -23,6 +25,7 @@ export default function Profile() {
           <Title>My purchases</Title>
         </div>
       </PageHeader>
+      <Subtitle>Hi there __USER__, here is your purchase summary.</Subtitle>
       <div className="grid-container">
         <div className="purchase-container">
           <h3>Purchases</h3>

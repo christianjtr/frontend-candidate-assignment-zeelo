@@ -11,13 +11,12 @@ export const StyledBookDetails = styled.div`
     grid-template-columns: 300px 1fr;
     margin-bottom: 30px;
     position: relative;
-    min-height: 300px;
+    max-height: 300px;
 
     .ribbon {
-      font-size: ${(props) => props.theme.fontSizes.lg}px;
+      font-size: ${(props) => props.theme.fontSizes.md}px;
       font-weight: 600;
       color: #fff;
-      padding: 5px;
     }
     .ribbon {
       --f: 0.5em;
@@ -45,12 +44,12 @@ export const StyledBookDetails = styled.div`
     .card-image {
       display: flex;
       flex-direction: column;
+      margin: 0;
       img {
         max-width: 100%;
         max-height: 100%;
         display: block;
         margin: auto;
-        max-height: 300px;
         flex-grow: 1;
         object-fit: contain;
       }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import { Button, PageHeader, Chip, Title } from '@components';
+import { Button, PageHeader, Chip, Title, LoaderSpinner } from '@components';
 import { useFetchBook } from '@hooks/useFetchBookById';
 import { useDeleteBookById } from '@hooks/useDeleteBookById';
 import { formatAsCurrency } from '@utils/formatNumber';
@@ -12,8 +12,8 @@ export default function BookDetails() {
   const { bookId } = useParams<string>();
   const [isDeleteToastOpened, setIsDeleteToastOpened] = useState<boolean>(false);
 
-  const { book, isLoading, hasError } = useFetchBook(+bookId!);
-  const { deleteBook, isLoading: isDeletingBook, message, hasError: hasErrorAtDeletingBook } = useDeleteBookById();
+  const { book, isLoading } = useFetchBook(+bookId!);
+  const { deleteBook, message, hasError: hasErrorAtDeletingBook } = useDeleteBookById();
 
   const handleOnClickEditButton = (): void => {
     navigate(`/books/edit/${book?.id}`);
@@ -60,7 +60,7 @@ export default function BookDetails() {
     };
   }, []);
 
-  if (isLoading) return null;
+  if (isLoading) return <LoaderSpinner />;
 
   return (
     <StyledBookDetails>
