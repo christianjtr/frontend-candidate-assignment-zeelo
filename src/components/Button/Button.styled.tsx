@@ -21,6 +21,7 @@ const StyledButton = styled.button`
   color: white;
   font-size: ${(props) => props.theme.fontSizes.md}px;
   font-weight: 800;
+  border: 1px solid ${(props) => props.theme.colors.orange};
 
   &:hover {
     cursor: pointer;

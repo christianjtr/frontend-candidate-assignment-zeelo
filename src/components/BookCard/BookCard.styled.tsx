@@ -6,47 +6,37 @@ export const StyledBookCard = styled.div`
   display: flex;
   flex-direction: column;
 
-  figure {
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
+  .book-card {
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
 
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    flex-grow: 1;
-    object-fit: cover;
-  }
-
-  .card-body {
-    padding: 20px;
-    min-height: 150px;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column;
-
-    .card-price {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 10px;
-      font-size: ${(props) => props.theme.fontSizes.lg}px;
-      /* color: ${(props) => props.theme.colors.pink}; */
+    figure {
+      margin: 0;
+      padding: 30px 0px;
+      transition: transform 0.2s; /* Animation */
     }
 
-    .card-pre-header {
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+      color: ${(props) => props.theme.colors.dark};
+      font-size: ${(props) => props.theme.fontSizes.lg}px;
+      font-weight: 600;
+    }
+
+    p.author {
+      margin-bottom: 10px;
       display: block;
       font-size: ${(props) => props.theme.fontSizes.sm}px;
       color: ${(props) => props.theme.colors.grey2};
     }
-
-    h2 {
-      margin: 5px 0px;
-      color: ${(props) => props.theme.colors.dark};
-      font-size: ${(props) => props.theme.fontSizes.md}px;
-      font-weight: 800;
-    }
-
     a {
       margin-top: auto;
       text-decoration: none;
@@ -54,9 +44,32 @@ export const StyledBookCard = styled.div`
       line-height: 1;
       color: ${(props) => props.theme.colors.orange};
     }
+
+    a:hover {
+      color: color-mix(in srgb, ${(props) => props.theme.colors.orange} 70%, white);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .price {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: ${(props) => props.theme.fontSizes.lg}px;
+    }
   }
 
-  @media screen and (max-width: 768px) {
-    flex-direction: row;
+  .book-card:hover {
+  }
+
+  @media screen and (max-width: 425px) {
+    .book-card {
+      img {
+        width: 100%;
+        height: 400px;
+      }
+    }
   }
 `;

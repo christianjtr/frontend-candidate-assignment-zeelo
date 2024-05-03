@@ -24,16 +24,18 @@ export default function BookCard(props: BookCardProps) {
 
   return (
     <StyledBookCard>
-      <figure>
-        <img src={coverUrl} alt={title} />
-      </figure>
-      <div className="card-body">
-        <span className="card-price">{formattedPrice}</span>
-        <span className="card-pre-header">{author}</span>
-        <h2>{title}</h2>
-        <a href="#" role="button" aria-label={`Link to ${title} detail`} onClick={handleOnClick}>
-          See details
-        </a>
+      <div className="book-card">
+        <figure>
+          <img src={coverUrl} alt={title} />
+        </figure>
+        <div className="card-content">
+          <h2>{title}</h2>
+          <p className="author">{`By ${author}`}</p>
+          <p className="price">{formattedPrice}</p>
+          <a href="#" role="button" aria-label={`Link to ${title} detail`} onClick={handleOnClick}>
+            See details
+          </a>
+        </div>
       </div>
     </StyledBookCard>
   );
