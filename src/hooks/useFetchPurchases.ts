@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { getPurchases } from '@services/apis/book/purchases.services';
+import { PURCHASE_HISTORY_ACTION_TYPES } from '@context/PurchaseHistory/action-types';
+import { PurchaseHistoryContext } from '@context/PurchaseHistory/PurchaseHistoryContext';
 import Book from '@app/domain/Book';
 import type { Purchase, PurchaseAPIResponse } from '@app-types/Purchase';
 
@@ -13,6 +15,8 @@ export const useFetchPurchases = (): UseFetchPurchaseInterface => {
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
+
+  const { dispatch } = useContext(PurchaseHistoryContext);
 
   const mapToPurchaseDTO = (data: PurchaseAPIResponse.Purchase[]): Purchase[] => {
     return data.map(({ books, ...rest }) => {
@@ -33,6 +37,13 @@ export const useFetchPurchases = (): UseFetchPurchaseInterface => {
       const response = await getPurchases();
       const responseDTO = mapToPurchaseDTO(response);
       setPurchases(responseDTO);
+
+      dispatch({
+        type: PURCHASE_HISTORY_ACTION_TYPES.SET_PURCHASE_HISTORY,
+        payload: {
+          purchases: responseDTO,
+        },
+      });
     } catch (error) {
       setHasError(true);
       throw new Error(error as string);
