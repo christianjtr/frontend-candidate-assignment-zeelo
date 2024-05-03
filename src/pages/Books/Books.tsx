@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useFetchBooks } from '@hooks/useFetchBooks';
+import { useFetchBooks } from '@hooks';
 import { Button, Title, PageHeader, BookCard, LoaderSpinner } from '@components';
 import { StyledBooks } from './Books.styled';
 

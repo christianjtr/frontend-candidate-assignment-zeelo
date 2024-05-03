@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button } from '@components';
-import { useFetchGenres } from '@hooks/useFetchGenres';
+import { useFetchGenres } from '@hooks';
 import Book from '@app/domain/Book';
 import { StyledAddNewBookForm } from './AddNewBookForm.styled';
 

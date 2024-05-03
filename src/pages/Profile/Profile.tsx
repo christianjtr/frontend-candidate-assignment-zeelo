@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Title, Subtitle, PageHeader, LoaderSpinner } from '@components';
-import { useFetchPurchases } from '@hooks/useFetchPurchases';
+import { useFetchPurchases } from '@hooks';
 import { PurchaseHistory, PurchaseStats } from './components';
 import { StyledProfile } from './Profile.styled';
 

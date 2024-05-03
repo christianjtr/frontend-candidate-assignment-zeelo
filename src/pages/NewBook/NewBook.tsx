@@ -1,9 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Title, PageHeader, LoaderSpinner } from '@components';
 import { AddNewBookForm } from './components/AddNewBookForm';
-import { useCreateBook } from '@hooks/useCreateBook';
-import { useEditBookById } from '@hooks/useEditBookById';
-import { useFetchBook } from '@hooks/useFetchBookById';
+import { useCreateBook, useEditBookById, useFetchBook } from '@hooks';
 import Book from '@app/domain/Book';
 import { StyledNewBook } from './NewBook.styled';
 

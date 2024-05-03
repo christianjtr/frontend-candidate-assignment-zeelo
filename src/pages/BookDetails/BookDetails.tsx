@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Button, PageHeader, Chip, Title, LoaderSpinner } from '@components';
-import { useFetchBook } from '@hooks/useFetchBookById';
-import { useDeleteBookById } from '@hooks/useDeleteBookById';
+import { useFetchBook, useDeleteBookById } from '@hooks';
 import { formatAsCurrency } from '@utils/formatNumber';
 import { StyledBookDetails } from './BookDetails.styled';
 
