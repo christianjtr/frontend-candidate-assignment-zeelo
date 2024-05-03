@@ -33,7 +33,7 @@ export default function NewBook(props: NewBookProps) {
   };
 
   if (isLoadingBook || isCreatingBook || isEditingBook) return <LoaderSpinner />;
-  if (!hasBook) return <BlankState state="no_data" message="There is no book" />;
+  if (!hasBook && isEditMode) return <BlankState state="no_data" message="There is no book" />;
 
   return (
     <StyledNewBook>
