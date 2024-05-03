@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Title, PageHeader, LoaderSpinner } from '@components';
+import { Title, PageHeader, LoaderSpinner, BlankState } from '@components';
 import { AddNewBookForm } from './components/AddNewBookForm';
 import { useCreateBook, useEditBookById, useFetchBook } from '@hooks';
 import Book from '@app/domain/Book';
@@ -14,7 +14,7 @@ export default function NewBook(props: NewBookProps) {
   const navigate = useNavigate();
   const { bookId } = useParams();
 
-  const { book, isLoading: isLoadingBook, refetch } = useFetchBook(+bookId!);
+  const { book, isLoading: isLoadingBook, refetch, hasBook } = useFetchBook(+bookId!);
   const { createBook, isLoading: isCreatingBook } = useCreateBook();
   const { editBook, isLoading: isEditingBook } = useEditBookById();
 
@@ -33,6 +33,7 @@ export default function NewBook(props: NewBookProps) {
   };
 
   if (isLoadingBook || isCreatingBook || isEditingBook) return <LoaderSpinner />;
+  if (!hasBook) return <BlankState state="no_data" message="There is no book" />;
 
   return (
     <StyledNewBook>

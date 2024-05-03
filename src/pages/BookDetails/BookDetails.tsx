@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import { Button, PageHeader, Chip, Title, LoaderSpinner } from '@components';
+import { Button, PageHeader, Chip, Title, LoaderSpinner, BlankState } from '@components';
 import { useFetchBook, useDeleteBookById } from '@hooks';
 import { formatAsCurrency } from '@utils/formatNumber';
 import { StyledBookDetails } from './BookDetails.styled';
@@ -11,7 +11,7 @@ export default function BookDetails() {
   const { bookId } = useParams<string>();
   const [isDeleteToastOpened, setIsDeleteToastOpened] = useState<boolean>(false);
 
-  const { book, isLoading } = useFetchBook(+bookId!);
+  const { book, isLoading, hasBook } = useFetchBook(+bookId!);
   const { deleteBook } = useDeleteBookById();
 
   const handleOnClickEditButton = (): void => {
@@ -48,6 +48,7 @@ export default function BookDetails() {
   const formattedPrice = formatAsCurrency(book?.price ?? 0);
 
   if (isLoading) return <LoaderSpinner />;
+  if (!hasBook) return <BlankState state="no_data" message="There is no book" />;
 
   return (
     <StyledBookDetails>
