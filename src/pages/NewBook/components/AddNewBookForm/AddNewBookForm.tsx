@@ -106,9 +106,21 @@ export default function AddNewBookForm(props: AddNewBookFormProps) {
             Genres
             <span aria-hidden="true">*</span>
           </label>
-          <select id="genres" name="genres" disabled={isLoadingGenres} multiple required>
+          <select
+            id="genres"
+            name="genres"
+            disabled={isLoadingGenres}
+            defaultValue={initialValues?.genres}
+            multiple
+            required
+          >
             {genres?.map(({ id, genre }) => (
-              <option key={`${genre}_${id}`} selected={initialValues?.genres?.includes(genre)} value={genre}>
+              <option
+                key={`${genre}_${id}`}
+                selected={initialValues?.genres?.includes(genre)}
+                defaultValue={genre}
+                value={genre}
+              >
                 {genre}
               </option>
             ))}

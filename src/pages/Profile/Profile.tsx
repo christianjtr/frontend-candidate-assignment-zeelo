@@ -25,7 +25,7 @@ export default function Profile() {
           <Title>My purchases</Title>
         </div>
       </PageHeader>
-      <Subtitle>Hi there __USER__, here is your purchase summary.</Subtitle>
+      <Subtitle>Hi there, here is your purchase summary.</Subtitle>
       <div className="grid-container">
         <div className="purchase-container">
           <h3>Purchases</h3>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 import { deleteBookById } from '@services/apis/book/book.services';
 
 export interface UseDeleteBookByIdInterface {
-  deleteBook: (id: number) => void;
+  deleteBook: (id: number) => Promise<void>;
   message: string | null;
   isLoading: boolean;
   hasError: boolean;
@@ -13,7 +14,7 @@ export const useDeleteBookById = (): UseDeleteBookByIdInterface => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
-  const deleteBook = async (id: number) => {
+  const deleteBook = async (id: number): Promise<void> => {
     setIsLoading(true);
 
     try {
@@ -28,6 +29,14 @@ export const useDeleteBookById = (): UseDeleteBookByIdInterface => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (message) {
+      toast(message, {
+        className: `toaster ${hasError ? 'toaster--error' : 'toaster--success'}`,
+      });
+    }
+  }, [message]);
 
   return {
     deleteBook,

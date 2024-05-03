@@ -11,46 +11,15 @@ export const StyledBookDetails = styled.div`
     grid-template-columns: 300px 1fr;
     margin-bottom: 30px;
     position: relative;
-    max-height: 300px;
-
-    .ribbon {
-      font-size: ${(props) => props.theme.fontSizes.md}px;
-      font-weight: 600;
-      color: #fff;
-    }
-    .ribbon {
-      --f: 0.5em;
-      --r: 0.8em;
-
-      position: absolute;
-      top: 20px;
-      right: calc(-1 * var(--f));
-      padding-inline: 0.25em;
-      line-height: 1.8;
-      background: ${(props) => props.theme.colors.pink};
-      border-bottom: var(--f) solid #0005;
-      border-left: var(--r) solid #0000;
-      clip-path: polygon(
-        var(--r) 0,
-        100% 0,
-        100% calc(100% - var(--f)),
-        calc(100% - var(--f)) 100%,
-        calc(100% - var(--f)) calc(100% - var(--f)),
-        var(--r) calc(100% - var(--f)),
-        0 calc(50% - var(--f) / 2)
-      );
-    }
+    max-height: 500px;
 
     .card-image {
+      padding: 20px;
       display: flex;
-      flex-direction: column;
-      margin: 0;
+      justify-content: center;
       img {
         max-width: 100%;
-        max-height: 100%;
-        display: block;
-        margin: auto;
-        flex-grow: 1;
+        max-height: 300px;
         object-fit: contain;
       }
     }
@@ -73,6 +42,12 @@ export const StyledBookDetails = styled.div`
         font-weight: 800;
       }
 
+      .card-price {
+        color: ${(props) => props.theme.colors.pink};
+        font-size: ${(props) => props.theme.fontSizes.lg}px;
+        font-weight: 600;
+      }
+
       .card-description {
         font-size: ${(props) => props.theme.fontSizes.md}px;
         margin: 20px 0px;
@@ -91,6 +66,7 @@ export const StyledBookDetails = styled.div`
   @media only screen and (max-width: 768px) {
     .card {
       grid-template-columns: 1fr;
+      max-height: fit-content;
     }
   }
 `;

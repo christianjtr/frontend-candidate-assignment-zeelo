@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Button, PageHeader, Chip, Title, LoaderSpinner } from '@components';
@@ -13,7 +13,7 @@ export default function BookDetails() {
   const [isDeleteToastOpened, setIsDeleteToastOpened] = useState<boolean>(false);
 
   const { book, isLoading } = useFetchBook(+bookId!);
-  const { deleteBook, message, hasError: hasErrorAtDeletingBook } = useDeleteBookById();
+  const { deleteBook } = useDeleteBookById();
 
   const handleOnClickEditButton = (): void => {
     navigate(`/books/edit/${book?.id}`);
@@ -27,7 +27,10 @@ export default function BookDetails() {
         className: 'toaster toaster--standard',
         action: {
           label: 'Delete',
-          onClick: () => deleteBook(book.id),
+          onClick: async () => {
+            await deleteBook(book.id);
+            navigate('/', { replace: true });
+          },
         },
         cancel: {
           label: 'Cancel',
@@ -44,21 +47,6 @@ export default function BookDetails() {
   };
 
   const formattedPrice = formatAsCurrency(book?.price ?? 0);
-
-  useEffect(() => {
-    if (message) {
-      toast(message, {
-        className: `toaster ${hasErrorAtDeletingBook ? 'toaster--error' : 'toaster--success'}`,
-      });
-      navigate('/', { replace: true });
-    }
-  }, [message]);
-
-  useEffect(() => {
-    return () => {
-      toast.dismiss();
-    };
-  }, []);
 
   if (isLoading) return <LoaderSpinner />;
 
@@ -94,13 +82,13 @@ export default function BookDetails() {
         </div>
       </PageHeader>
       <div className="card">
-        <div className="ribbon">{formattedPrice}</div>
         <figure className="card-image">
           <img src={book?.coverUrl} alt={book?.title} />
         </figure>
         <div className="card-body">
           <span className="card-pre-heading">{book?.author}</span>
           <h3 className="card-title">{book?.title}</h3>
+          <p className="card-price">{formattedPrice}</p>
           <p className="card-description">{book?.description}</p>
           <div className="card-chips-container">
             {book?.genres?.map((genre, index) => <Chip key={`genre_${genre}_${index}`}>{genre}</Chip>)}
